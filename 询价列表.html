@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>游天地微店</title>
+		<link rel="stylesheet" href="style/weui.css" />
+		<link rel="stylesheet" href="style/weui2.css"/>	
+		<link rel="stylesheet" href="style/base.css">
+		<link rel="stylesheet" href="style/swiper.min.css">
+		<link rel="stylesheet" href="style/css.css">
+		<style>
+			html,body{background-color:#f8f8f8;}
+		</style>
+	</head>
+
+	<body style="padding-bottom: 5rem;">
+		<div class="global" style="min-height: 10rem;">
+			<div class="topside">
+			    <div class="toback"><a href="javascript:history.go(-1);"><i class="ico-back"></i></a></div>
+			    <div class="pagetitle"><b>询价列表</b></div>
+			    <div class="otherFun">
+			    	<a href="#">
+			    		<i class="ico-dot"></i>
+			    	</a>
+			        
+			    </div>
+			</div>
+			<div class="btn-add-clk clearfix">
+	        	<section>
+	        		<h4 class="infoname">桂林三日游<span class="fr status">未报价</span></h4>
+	        		<div class="txtinfo">
+	        			<p>序号:<span>20170811001</span></p>
+	        			<p>日期:<span>2017-07-31</span></p>
+	        			<div class="xqbtn">
+	        				<a href="询价详细.html" class="ckxq">查看详情</a>
+	        			</div>
+	        		</div>
+	        	</section>
+	        	<section>
+	        		<h4 class="infoname">桂林三日游<span class="fr status">未报价</span></h4>
+	        		<div class="txtinfo">
+	        			<p>序号:<span>20170811001</span></p>
+	        			<p>日期:<span>2017-07-31</span></p>
+	        			<div class="xqbtn">
+	        				<a href="javascript:;" class="ckxq">查看详情</a>
+	        			</div>
+	        		</div>
+	        	</section>
+	        	<section>
+	        		<h4 class="infoname">桂林三日游<span class="fr status">已报价</span></h4>
+	        		<div class="txtinfo">
+	        			<p>序号:<span>20170811001</span></p>
+	        			<p>日期:<span>2017-07-31</span></p>
+	        			<div class="xqbtn">
+	        				<a href="javascript:;" class="ckxq">查看详情</a>
+	        			</div>
+	        		</div>
+	        	</section>
+	        	<section>
+	        		<h4 class="infoname">桂林三日游<span class="fr status">未报价</span></h4>
+	        		<div class="txtinfo">
+	        			<p>序号:<span>20170811001</span></p>
+	        			<p>日期:<span>2017-07-31</span></p>
+	        			<div class="xqbtn">
+	        				<a href="javascript:;" class="ckxq">查看详情</a>
+	        			</div>
+	        		</div>
+	        	</section>
+	        	
+	        </div>
+	        
+		</div>
+		<div class="footer-fixed">
+				<div class="web-link">
+					<a href="javascript:;" onclick="tel('24小时服务热线','0731-85012281');">
+						<i class="ico-return"></i>
+	    				<p>返回</p>
+					</a>
+				</div>
+				<div class="comfirm btn-yd">
+					<a href="javascript:history.go(-1);" class="btn-ok">新增询价</a>
+				</div>
+			</div>
+		
+		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="js/zepto.min.js" ></script>
+		<script type="text/javascript" src="js/swiper.min.js"></script>
+		<script type="text/javascript" src="js/common.js"></script>
+		
+		<script>
+			var t = $(".status");
+            t.each(function () {
+                var ostatus = $(this).text();
+                switch (ostatus) {
+                    case "已报价":
+                        $(this).css("color", "#00a388");
+                        break;
+                    case "未报价":
+                        $(this).css("color", "#ff6f69");
+                        break;
+                }
+            })
+		</script>
+	</body>
+
+</html>

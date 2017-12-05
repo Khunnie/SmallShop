@@ -1,0 +1,563 @@
+/* 星星闪动 */
+@keyframes move
+{
+	from {
+		transform: scale(0.9);
+	}
+	to {
+		transform: scale(1.2);
+	}
+}
+
+
+
+/*  banner */
+.banner{
+	 width: 100%; 
+	 position: relative; 
+	 overflow: hidden;
+	 height: 7rem;
+	 border-bottom: 2px solid #e5bd5b;
+}
+.store-list{
+	width: 100%;
+	height:7rem;
+	background: url(../images/banner.jpg) no-repeat;
+	background-size:120% 100% ;
+	position: relative;
+}
+.store-box{
+	position: absolute;
+	left: 0.5rem;
+	bottom: 0.5rem;
+	width: 100%;
+	height: 4rem;
+	color: #fff;
+}
+.store-img{
+	width:4rem;
+	height:4rem;
+	float: left;
+	border-radius:50%;
+	border: 2px solid #fff;
+	overflow: hidden;
+}
+.strore-name{
+	float: left;
+	width:75%;
+	margin-left: 0.35rem;
+}
+.strore-name h4{
+	font-size: 1.1rem;
+}
+.strore-name p{
+	font-size: 0.7rem;
+	line-height: 1.3rem;
+	word-break: break-all;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp:1;
+    overflow: hidden;
+}
+
+.strore-name i,.strore-name span{
+	margin-right: 0.4rem;
+}
+.guonei .guoneibox {
+	 position: absolute;
+	 height: 100%; 
+}
+.guonei .guoneibox ul{
+	height: 100%;
+}
+.guonei .guoneibox ul li { 
+	width: 100%; 
+	float:left;
+	position:relative;
+	height: 100%;
+}
+.guonei .guoneibox ul li img{
+	width: 100%;
+	height: 100%;
+	background-size: 100% 100%;
+} 
+.guonei .guoneibox ul li .txt{
+	width:100%;
+	padding:0.5rem 0.5rem 1.5rem;
+	background-color:rgba(0,0,0,.5);
+	position:absolute;
+	left:0;
+	bottom:0;
+}
+.guonei .guoneibox ul li .txt a{color:#fff;}
+.search{
+	width:100%;
+	height: 3rem; 
+	background: rgba(0,0,0,.7);
+}
+.btn-search{
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+.btn-search .keyIn{
+	position: absolute;
+	left: 1rem; 
+	top: 0.5rem;
+	width:80%; 
+	height: 2rem;
+	line-height: 2rem;
+	 background:#eee;
+	 color: #333;
+	 border-radius: 25px;
+	padding-left:2.6rem;
+	 font-size: 0.85rem;
+}
+.btn-search .ico-search-gray{
+	position: absolute;
+	left: 1.4rem;
+	top:0.5rem;
+	z-index: 3;
+}
+#search{
+	position: absolute;
+	right: 1.12rem;
+	color: #fff;
+	top: 0.85rem;
+	font-size: 1rem;
+}
+.guonei .icon,.topic .icon,.accordion .icon{
+	 position: absolute; 
+	 width: 100%; 
+	 height: 1rem; 
+	 bottom: 3.5rem; 
+	 text-align: center; 
+	 line-height: 0.8rem;
+}
+.guonei{margin:0 0 0.5rem 0;}
+.guonei .icon{text-align: right;}
+.guonei .icon a,.topic .icon a,.accordion .icon a{ 
+	margin: 0 0.2rem; 
+	width: 0.6rem; 
+	height: 0.6rem; 
+	border-radius: 1rem;
+	display:inline-block;
+	vertical-align: middle;
+	background-color:#c8c8c8;
+}
+.guonei .icon a.this,.topic .icon a.this,.accordion .icon a.this { 
+	background-color: #f8b551; 
+}
+.guonei img { 
+	width: 100%; 
+	height: 7rem;
+	border-radius:0; 
+}
+.yikatong{
+	padding:1rem 0.5rem;
+	text-align:center;
+	height:auto!important;
+}
+.yikatong img{max-width:100%;width:50%;}
+
+.banner.detailbanner,.banner.detailbanner img{height:12rem;}
+
+.searchM input::-webkit-input-placeholder { 
+    color:    #fff;
+}
+.searchM input:-moz-placeholder { 
+    color:    #fff;
+}
+.searchM input::-moz-placeholder { 
+    color:    #fff;
+}
+.searchM input:-ms-input-placeholder { 
+    color:    #fff;
+}
+
+.searchM{
+	background-color:#fff;
+	padding: 0.5rem;
+	border-bottom: 2px solid #e5bd5b;
+}
+.logo_img{width:50%;}
+.logo_img img{
+	background-size: 100% 100%;
+	width: 100%;
+	vertical-align: middle;
+}
+.classify{
+	width:31%;
+	height:2rem;
+	line-height:2rem;
+	position:relative;
+	font-size:0.85rem;
+	padding-left: 0.5rem;
+}
+.classify ul{
+	position: absolute;
+	left: 0;
+	top: 2rem;
+	background: #fff;
+	width: 100%;
+	z-index: 100;
+	padding-left: 0.5rem;
+	display: none;
+}
+.tit-select{
+	line-height:2rem;
+	text-align: center;
+	font-size: 1rem;
+}
+.classify i{
+	width:1.5rem ;
+	height:1.07rem;
+	background-size:contain ;
+	background-repeat: no-repeat;
+	background-position: top;
+	margin-top: -0.25rem;
+}
+.classify .ico-mj{
+	background-image:url(../images/ico1.png);
+	animation:move .5s 8;
+	animation-timing-function:linear;
+	animation-direction:alternate;
+}
+.searchM .classify select{
+	width:130%;
+	background-color:#bf2b2b;
+	color:#fff;
+	font-size: 0.9rem;
+	height: 2.057rem;
+	border: 0;
+	outline: none;
+}
+.searchM .classify select option{padding:0;}
+.searchM .classify .ico-down{
+	position:absolute;
+	right:0.28rem;
+	top:0.82rem;
+	height: 0.64rem;
+	width: 0.65rem;
+	background: url(../images/select.png) no-repeat;
+	background-size: contain;
+}
+.searchM .search{
+	height:2.057rem;
+	width: 55%;
+	background-color: #eee;
+	border-radius: 10rem;
+	padding:0.2rem 1rem 0.2rem 2.6rem;
+	position:relative;
+}
+.searchM .search i{
+	position:absolute;
+	left:0.5rem;
+	top:0;
+}
+.searchM .search input[type="search"].keyIn {
+	vertical-align: middle;
+	font-size: 0.9rem;
+	height: 1.657rem;
+	line-height: 1.657rem;
+	color: #000;
+	-webkit-appearance: none;
+	border-radius: 0;
+	background: none;
+	display: block;
+	width: 100%;
+}
+.searchM .search input::-webkit-input-placeholder { 
+    color:#999;
+    font-size: 0.9rem;
+}
+.searchM .search input:-moz-placeholder { 
+    color:#999;
+    font-size: 0.9rem;
+}
+.searchM .search input:-ms-input-placeholder { 
+    color:#999;
+    font-size: 0.9rem;
+}
+.searchM .searchbtn{width:15%;}
+.searchM .searchbtn a{display: block;}
+
+.nav{background-color:#fff;}
+.nav ul{
+	margin-left: -1px;
+}
+.nav li{
+	width:33.33%;
+	float: left;
+	border-left:1px solid #e1d1dc ;
+	font-size:0.85rem;
+	border-bottom:1px solid #e1d1dc ;
+	height:3.5rem;
+	line-height: 3.5rem;
+}
+.nav a{
+	display: block;
+	overflow: hidden;
+}
+.nav a p{
+	float: left;
+	margin-left: 0.76rem;
+	margin-right: 0.3rem;
+	display: inline-block;
+}
+.nav a span{
+	color: #333;
+	float: left;
+	text-align: center;
+	height: 100%;
+	margin-left: 0.3rem;
+	font-size: 0.8rem;
+}
+.nav a p img{
+	width:2.2rem;
+	height:2.2rem;
+	display: inline-block;
+	vertical-align: middle;
+}
+.advert{
+	width: 100%;
+	height: 2.5rem;
+	line-height:2.5rem;
+	background: #eeeeee;
+	padding-left: 1rem;
+	font-size: 0.8rem;
+	overflow: hidden;
+	position: relative;
+}
+.advert ul{
+	width: 90%;
+	float: left;
+	position: absolute;
+	left: 3rem;
+	top: 0;
+}
+.advert a{
+	color: #666;
+	line-height:2.5rem;
+	height: 2.5rem;
+	display: inline-block;
+}
+.ico-lb{
+	background: url(../images/ico2.png) no-repeat;
+	width: 1.2rem;
+	height: 1.5rem;
+	background-size: contain;
+	float: left;
+	vertical-align: middle;
+	margin-top: 0.58rem;
+}
+
+.adv{
+	background-color:#bf2b2b;
+	padding:0.8rem 1rem;
+	margin:0.5rem 0;
+}
+.adv img{width:100%;}
+.allline,.mover-box{width: 96%;margin: 0 2%;}
+.allline-tab{padding:0.8rem 0;}
+.allline-tab li{
+	float:left;
+	text-align:center;
+	position:relative;
+	height: 1.875rem;
+	line-height: 1.875rem;
+	background: #b5b5b5;
+	border-radius: 25px;
+	margin-right: 0.4rem;
+	border: 1px solid #b5b5b5;
+	font-size: 0.9rem;
+	width: 18%;
+}
+.allline-tab li a{color: #fff;}
+.allline-tab .active{
+	background: #2bb9eb;
+	border: 1px solid #2bb9eb;
+}
+.allline-tab .active a{
+	color: #fff;
+}
+.xsth{padding-top: 1rem;}
+.xsth li{
+	float:left;
+	text-align:center;
+	position:relative;
+	width:10.5rem!important;
+	margin-right: 0.65rem;
+	border-bottom: 0.18rem solid #c7c7c7;
+	background: #eee;
+}
+.swiper-slide a img {width: 100%;height: 100%;}
+.swiper-slide div.tip {
+	position: absolute;
+	top: -5px;left: 10px;
+	width:2.85rem;
+	height:3rem;
+	background:url(../images/tip.png) no-repeat;
+	background-size: contain;
+	font-size:0.75rem;
+	color: #fff;
+	line-height: 100%;
+	font-weight: bold;
+	z-index: 1;
+}
+.effect div.tip span {
+	display: block; 
+	font-size: 0.9rem;
+	margin: 0.5rem 0 0.25rem 0;
+	font-weight: normal;
+}
+.effect div.con_area {padding: 0.3rem;}
+.effect div.con_area p {
+	word-wrap: break-word;
+	width: 100%;
+	height: 1.5rem;
+	margin-bottom: 4px;
+	vertical-align: middle;
+	font-size: 0.8rem;
+	text-align: left;
+}
+.effect div.con_area p a {
+	color: #37414d;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp:1;
+	-webkit-box-orient: vertical;
+}
+.effect div.action {
+	font-size: 0.75rem;
+	height: 2.5rem;
+	overflow: hidden;
+	color: #999;
+}
+
+.effect div.action span i {
+	font-size: 0.7rem;
+	font-weight: normal;
+	margin: 0 2px;
+}
+.effect div.action span {
+	font-size: 1rem;
+	color: #df5a49;
+	font-weight: bold;
+	margin-right:0.2rem;
+	float: left;
+}
+.effect div.action span.small {
+	font-size: 0.7rem;
+	color: #999;
+	text-decoration: line-through;
+	margin-left:0.6rem;
+	float: right;
+}
+.topic{
+	width: 100%; 
+	background: #eee;
+	height: 12rem;
+	padding: 1rem 2%;
+	position: relative;
+	overflow: hidden;
+	margin-bottom: 0.5rem;
+}
+.topic-list{
+	width: 100%;
+	height: 90%;
+	overflow: hidden;
+}
+.topic-list ul{
+	width: 200%;
+	height: 100%;
+	position: relative;
+}
+.topic-list ul li{
+	float: left;
+	height: 100%;
+	width: 50%;
+}
+.effect-marley{
+	width:32%;
+	height:100%;
+	float: left;
+	margin-right: 0.4rem;
+	box-sizing: border-box;
+	position: relative;
+}
+.topic-list .mr0{margin-right: 0;}
+.effect-marley img{
+	width: 100%; 
+	height: 100%;
+}
+.effect-marley .con_area{
+	position: absolute;
+	left: 0;
+	top: 35%;
+	color: #fff; 
+	text-align: center;
+	width: 100%;
+}
+.effect-marley .con_area h2{font-size: 0.95rem;}
+.effect-marley .con_area .txt{
+	font-size: 0.65rem;
+	text-align: center;
+	overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    vertical-align: middle;
+}
+.topic .topic-list .icon{bottom:0.2rem;}
+
+.profile{
+	background: #fff;
+	position: relative;
+	padding: 0.5rem 0;
+}
+.profile .ico-syh{
+	width: 1rem;
+	height: 1.4rem;
+	background: url(../images/ico3.png) no-repeat;
+	background-size: contain;
+	position: absolute;
+	left: 1rem;
+	top: 0.5rem;
+	
+}
+.profile p{
+	width: 85%;
+	margin-left: 2.4rem;
+	color: #666;
+	font-size: 0.8rem;
+}
+/* 店铺简介 */
+.profile .sub-tit{
+	height: 2.2rem;
+	border:none;
+	margin-bottom: 0.5rem;
+}
+.indexTitle{
+	background: url(../images/indexTitle.png) no-repeat;
+	background-size: contain;
+	height: 0;
+	padding-top: 1rem;
+	width: 4.5rem;
+	overflow:hidden;
+	margin-top: 0.5rem;
+}
+.pro_body{
+	position: relative;
+}
+.support{
+	background: #f6f6f6;
+	color: #b3b3b3;
+	font-size: 0.65rem;
+	text-align: center;
+	height: 3rem;
+	line-height: 3rem;
+}

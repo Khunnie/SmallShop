@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <title>产品发布</title>
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="js/zepto.min.js" ></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/base.js"></script>
+    <link rel="stylesheet" href="style/weui.css" />
+	<link rel="stylesheet" href="style/weui2.css"/>
+    <link rel="stylesheet" href="style/base.css">
+    <link rel="stylesheet" href="style/css.css">
+    <style>
+        html, body
+        {
+            background-color: #eee;
+        }
+        .product_fb
+        {
+            width: 100%;
+            background: #fff;
+            background-image: -webkit-gradient(linear, 50% 0, 0 100%, from(transparent), color-stop(.5, transparent), color-stop(.5, #eee), to(#eee)), -webkit-gradient(linear, 50% 0, 100% 100%, from(transparent), color-stop(.5, transparent), color-stop(.5, #eee), to(#eee));
+            background-image: -moz-linear-gradient(50% 0 -45deg, transparent, transparent 50%, #eee 50%, #eee), -moz-linear-gradient(50% 0 -135deg, transparent, transparent 50%, #eee 50%, #eee);
+            background-size: 12px 6px;
+            background-repeat: repeat-x;
+            background-position: 0 100%;
+            padding: 2rem;
+            text-align: center;
+            color: #666;
+        }
+        .p_tips
+        {
+            border-bottom: 1px solid #ccc;
+            color: #999;
+            padding: 2rem 0 0;
+            margin: 0 1rem;
+        }
+        .p_tips .p_tips_tit
+        {
+            background-color: #eee;
+            width: 6rem;
+            text-align: center;
+            margin: -0.8rem auto;
+            color: #999;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="global">
+        <!--  <div class="topside">
+            <div class="toback">
+                <a href="javascript:history.go(-1);"></a></div>
+            <div class="pagetitle">
+                <b>会员中心</b></div>
+            <div class="otherFun">
+            </div>
+        </div>-->
+        <div class="product_fb">
+            <p>
+                <img src="images/pcsetting.png" style="width: 110px; height: 110px;"></p>
+            <p style="font-size: 0.9rem; margin: 0.5rem 0;">
+                您可以发布自己的专属产品</p>
+            <p style="font-size: 1.2rem; color: #333; font-weight: bold;">
+                请在电脑上登陆saas</p>
+            <p style="color: #10AEE4; border-bottom: 1px dotted #97C7DD; padding: 0.3rem 0; margin-bottom: 0.5rem;">
+               fxs.youtiandi.com</p>
+            <p style="font-size: 0.9rem; margin: 0.5rem 0;">
+                同时，您也可以在电脑上管理您的订单、客户和获取更多功能</p>
+        </div>
+        <div class="p_tips">
+            <div class="p_tips_tit">
+                <i class="ico-r-dp"></i>小提示</div>
+        </div>
+        <p style="margin: 1rem; color: #999; font-size: 0.9rem;">
+            请在电脑上登陆saas fxs.youtiand.com.</p>
+    </div>
+   <footer>
+				<div class="bottomMenu">
+					<ul>
+						
+						<li>
+							<a href="index.html">
+								<i class="ico-home"></i>
+                				<p>我的店铺</p>
+            				</a>
+						</li>
+                        <li>
+							<a href="javascript:;">
+								<i class="ico-ask"></i>
+                				<p>我的产品</p>
+            				</a>
+						</li>
+                        <li>
+							<a href="#">
+								<i  class="ico-use"></i>
+                				<p>购买服务</p>
+            				</a>
+						</li>
+						<li class="on">
+							<a href="#">
+								<i class="ico-personcenter"></i>
+                				<p>管理中心</p>
+            				</a>
+						</li>
+					</ul>
+				</div>
+			</footer>
+    <script type="text/javascript">
+        var code = jQuery.getQueryString("code");
+        var oid = localStorage.getItem("openid");
+        var shopId = localStorage.getItem("shopid");
+        var shopphone = localStorage.getItem("shopphone");
+        $(document).ready(function () {
+            if (jQuery.isLogin()) {
+                GetDB();
+            } else {
+                // window.location = "gwlogin.html";
+            }
+
+
+        });
+
+        function GetDB() {
+            jQuery.FxsRequest("action=getmanageruser&oid=" + oid, "", function (data) {
+                if (!data.Result) { jQuery.isReturnLogin(data.Msg); }
+                var HTML = "";
+                var json = jQuery.parseJSON(data.Msg);
+                for (var i = 0, t; t = json.Table[i++]; ) {
+
+
+                    HTML += "<div class='btns-clk'>";
+                    HTML += "<a>";
+                    HTML += "<div class='btn-clk'>";
+                    HTML += " <div class='title'>";
+                    HTML += unescape(t.user_name);
+                    HTML += "  </div>";
+                    HTML += "  <p>";
+                    HTML += "     手机：<span>" + t.mobile + "</span></p>";
+                    HTML += "  <p>";
+                    HTML += "    邮箱：<span>" + t.email + "</span></p>";
+                    HTML += " </div>";
+                    HTML += "</a>";
+                    HTML += "</div>";
+                }
+                $("#userInfo").html(HTML);
+            });
+        }
+
+       
+
+    </script>
+
+
+</body></html>

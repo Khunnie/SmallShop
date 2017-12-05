@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>游天地微店</title>
+		<link rel="stylesheet" href="style/base.css">
+		<link rel="stylesheet" href="style/css.css">
+		<link rel="stylesheet" href="style/icon.css" />
+		<link rel="stylesheet" href="style/weui.css" />
+		<link rel="stylesheet" href="style/weui2.css"/>	
+		<style>
+			html,body{background-color:#f8f8f8;}
+			.select-btns-clk.select-tc .combo_box {
+			    border: 1px solid #2bb9eb;
+			    border-radius: 0.4rem;
+			    padding: 0.2rem 1rem;
+			    display: block;
+			    float: left;
+			    background:transparent;
+			    color: #2bb9eb;
+			    margin: 0;
+			    margin-right: 0.5rem;
+			}
+			.select-btns-clk.select-tc .combo_box.selected {
+				border: 1px solid #2bb9eb;
+			    background: url(images/sel.png) right bottom no-repeat;
+			    background-size: 1.6rem 1.6rem;
+			}
+		</style>
+	</head>
+
+	<body style="padding-bottom: 5rem;">
+		<div class="global" style="min-height: 10rem;">
+			<div class="topside">
+			    <div class="toback"><a href="javascript:history.go(-1);"><i class="ico-back"></i></a></div>
+			    <div class="pagetitle"><b>报价详细</b></div>
+			    <div class="otherFun">
+			        <a href="#">
+			    		<i class="ico-dot"></i>
+			    	</a>
+			    </div>
+			</div>
+			<section class="order2-2">
+		    	<div class="order2-2b">
+			      	<dl>
+			        	<dt>标题</dt>
+			        	<dd>
+			          		<input type="text" class="inputstyle" id="txtContactName" placeholder="请输入询价标题">
+			       	 	</dd>
+			      	</dl>
+			      	<dl>
+			        	<dt>出发日期</dt>
+			        	<dd class="arrow">
+			        		<div class="weui_cell_bd weui_cell_primary">
+			                    <input class="weui_input" type="text" value="" id='date'/>
+			                     
+			                </div>
+			        	</dd>
+			      	</dl>
+			      	<dl>
+						<dt>预计天数</dt>
+						<dd style="position:relative;">
+							<div class="weui_cell_bd weui_cell_primary">
+			                    <input class="weui_input" type="number" pattern="[0-9]*" value="" id='ts'/>
+								<span style="position:absolute;right:0.5rem;top:0;">天</span>
+							</div>
+						</dd>
+					</dl>
+					<dl>
+						<dt>预计人数</dt>
+						<dd style="position:relative;">
+							<div class="people">
+								<span>成人</span>
+								<div class="weui_cell_bd weui_cell_primary">
+			                    	<input class="weui_input" type="number" pattern="[0-9]*" value="" id='cr' placeholder="1"/>
+			                     
+			                </div>
+							</div>
+							<div class="people">
+								<span>儿童</span>
+								<div class="weui_cell_bd weui_cell_primary">
+			                    	<input class="weui_input" type="number" pattern="[0-9]*" value="" id='et' placeholder="请输入人数"/>
+			                     
+			                </div>
+							</div>
+						</dd>
+					</dl>
+			      	<dl>
+						<dt>出游预算</dt>
+						<dd style="position:relative;">
+							<div class="weui_cell_bd weui_cell_primary">
+								<input class="weui_input" type="number"  name="budget" min="1" pattern="[0-9*]"/> 
+							</div>
+							<span style="position:absolute;right:0.5rem;top:0;">元/人</span>
+						</dd>
+					</dl>
+					
+			      <dl class="choose_area" style="height: auto;">
+			        <dt>目的地</dt>
+			        <dd class="select-btns-clk select-tc clearfix" style="height: auto;padding:0;border-width:0;position:relative;"> 
+			        	<a class="combo_box selected" data-cbo="jn" href="javascript:;">境内</a> 
+			        	<a class="combo_box" data-cbo="jw" href="javascript:;">境外</a> 
+			        	<a class="btn-yzm btn-qk" id="area-clear"  href="javascript:;">清空</a>
+			        </dd>
+			      </dl>
+				    <dl style="height: auto;">
+				        <dt></dt>
+				        <dd style="height: auto;margin-left: 0;">
+				          <textarea class="textareastyle" id="nr" style="width:100%;display:block;padding:0.5rem;" placeholder="请输入询价目的地/景点/酒店等"></textarea>
+				        </dd>
+				    </dl>
+			      	<dl>
+			        	<dt>住宿标准</dt>
+			        	<dd class="arrow">
+			          		<div class="weui_cell_bd weui_cell_primary">
+			                   <input class="weui_input" type="text" value="" id='jd' placeholder="请选择酒店"/>
+			               </div>
+			       	 	</dd>
+			      	</dl>
+			      <dl class="fj-btn">
+			        <dt>附件</dt>
+			        <dd style="position: relative;">
+			        	<a href="javascript:;" class="btn-yzm" >上传</a>
+			        	<input type="file" value="上传"  id="uploadsc" onchange="previewImage(this)"/>
+			        </dd>
+			      </dl>
+			      <div class="fj-img">
+			       <img src="images/visa.jpg" id="zzpic"> <input type="hidden" id="strZzzs">
+			      </div>
+			    </div>
+		    	
+			  </section>
+		   
+			<input id="hid_id" type="hidden" value="0" />
+	        <div class="login-ok">
+	            <input type="hidden" runat="server" id="fbfw" value="" />
+	            <input type="hidden" runat="server" id="fbfwid" value="" />
+	            <a class="btn-login-ok exitsigin" id="btnsaveuser" onclick="showorder()" href="javascript:;">
+	                询价</a> <a class="btn-login-ok exitsigin" id="btnShowtip" style="display: none" href="javascript:;">
+	                    正在询价...</a>
+	        </div>
+	        <div class="overmark"></div>
+			<div id="xj-box">
+				<h4>报价</h4>
+				<dl>
+					<dt>报价人</dt>
+					<dd>
+						<span class="fl">张先生</span>
+						<p class="fl">+8613871355468</p>
+					</dd>
+				</dl>
+				<dl>
+					<dt>报价</dt>
+					<dd>
+						<strong>2360</strong>
+						<em class="fr">元/人</em>
+					</dd>
+				</dl>
+				<div class="login-ok">
+					 <a class="btn-login-ok exitsigin"  href="询价列表.html">确认报价</a>
+					  <a class="btn-login-ok exitcanel" href="javascript:;">取消</a>
+				</div>
+			</div>
+			
+		</div>
+		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="js/base.js" ></script>
+		<script type="text/javascript" src="js/zepto.min.js" ></script>
+		<script type="text/javascript" src="js/picker.js" ></script>
+		<script type="text/javascript" src="js/select.js" ></script>
+		<script type="text/javascript" src="js/lrz.min.js" ></script>
+		<script type="text/javascript" src="js/common.js" ></script>
+		<script>
+		  $("#date").datetimePicker({title:"选择日期",m:1});
+	     
+	      $("#jd").select({
+	        title: "请选择酒店",
+	        autoClose:true,
+	        
+	        items: ['五星级','四星级','三星级'],
+	        onChange: function(d) {
+	        }
+	      });
+           $(".combo_box").on("touchend",function(){
+           	    $(this).addClass("selected").siblings().removeClass("selected")
+           })
+           $(".btn-qk").on("touchend",function(){
+           	   $(".combo_box").removeClass("selected");
+           	   $("#nr").val("");
+           })
+	         function previewImage(file) {
+		    	var MAXWIDTH = 100;
+			    var MAXHEIGHT = 200;
+			    if (file.files && file.files[0]) {
+			        var reader = new FileReader();
+			        reader.onload = function (evt) {         
+			            $('#zzpic').attr('src',evt.target.result)
+			        };
+			        reader.readAsDataURL(file.files[0]);//
+			    }
+			}
+           function showorder(){
+			    var $box = $("#xj-box");
+			    $('.overmark').show();
+			    var top = ($(window).height() - $box.outerHeight()) / 3;
+			    var w = ($(window).width() - $box.outerWidth()) / 2;
+			    top = top < 0 ? 0 : top;
+			    $box.show().animate({"top":top,"left":w},100);
+				$("html,body").css({"overflow":"hidden","height":"100%"})
+			    $('.exitcanel').bind('click', function () {
+			   		$('.overmark,#xj-box').hide();
+					$("html,body").css({"overflow":"auto","height":"auto"})
+				});
+			}
+			
+		</script>
+	</body>
+
+</html>

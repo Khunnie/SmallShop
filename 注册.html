@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html style="background-color: #fff;">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>游天地微店</title>
+		<link rel="stylesheet" href="style/base.css">
+		<link rel="stylesheet" href="style/css.css">
+		<link rel="stylesheet" href="style/weui2.css" />
+	</head>
+	<body style="background-color: #e4e5e5;">
+		<div class="loginbg reg" style="min-height: 10rem;background-color: #e4e5e5;">
+			<div class="filter"></div>
+			<div class="login sigin">
+				
+				<div class="img"><i class="ico-login"></i></div>
+				
+					<div class="siginbox">
+						<ul class="yh">
+							<li class="current gw">境外用户</li>
+							<li class="zg">中国内地用户</li>
+						</ul>
+						<div class="gw-box">
+							<div class="tenant" style="display: none;">
+								<label class="fxs-label active">
+									<input type="radio" name="fxs" checked="checked" value="on"  />
+									<span>分销商</span>
+									
+								</label>
+								<label  class="gys-label">
+									<input type="radio" name="fxs" />
+									<span>供应商</span>
+									
+								</label>
+								
+							</div>
+							<div class="fxs-box">
+								<div>
+									<span class="ico-logo">
+										<i class="ico-mc"></i>
+									</span>
+									<input type="text" name="mc" placeholder="您的旅行社/机构全称" class="userName"/>
+								</div>
+								<div>
+									<span class="ico-logo"><i class="ico-user"></i></span>
+									<div class="user-name">
+										<div id="type" class="test">
+								            <span>中国 +86</span>
+								            <ul class="dropdown">
+								                <li>中国 +86</li>
+								            </ul>
+								        </div>
+										<input type="tel" id="username" class="userName" placeholder="请输入您的手机号">
+									</div>
+								</div>
+								<div>
+									<span class="ico-logo">
+										<i class="ico-ps"></i>
+									</span>
+									<div class="telyz">
+										<input type="text" name="dtmm" placeholder="请输入动态密码" class="userName" />
+										<span>获取手机验证码</span>
+									</div>
+								</div>
+										
+							</div>
+							<div class="zhlist" style="display: none;">
+								<label>
+									<input type="radio" name="mf" checked="checked" />
+									<span>个人免费版</span>
+								</label>
+								<label>
+									<input type="radio" name="mf" /><span></span>
+									<div class="test">
+										<span>付费套餐帐号</span>
+										<ul class="dropdown">
+											<li>一年</li>
+											<li>两年</li>
+										</ul>
+									</div>
+										
+								</label>
+							</div>
+						</div>
+					</div>
+				<div class="provision" style="padding:0 1rem;">
+					<em></em>
+					<span>我愿意接受网站服务条款</span>
+					<a href="javascript:;">查看条款</a>
+				</div>
+				<div class="login-ok clearfix" id="sigin">
+					<a class="btn-login-ok exitsigin" href="javascript:;" onclick="UserSigin()" >申请开店</a>
+				</div>
+				
+			</div>
+		</div>
+		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="js/base.js"></script>
+		<script type="text/javascript" src="js/zepto.min.js" ></script>
+		<script>
+		
+			function UserSigin() {
+	            var tmpUserName = $("#username").val()
+	            var tmpUserPwd = $("#userpw").val();
+	             $(document).on("click", "#sigin", function() {
+	             	 if (!CheckPhoneNum(tmpUserName) && !CheckEmail(tmpUserName) && !CheckLoginName(tmpUserName)) {
+	             	 	 $("#username").focus();
+	             	 	 $.toast("请输入正确手机号", "forbidden");
+	             	 	 return false;
+	             	}
+	             	 if($(".provision em").is(".on")){
+				  		return false;
+				  	}else{
+				  		$.toast("请同意服务条款~", "forbidden");
+				  		return false;
+				  	}
+	             
+	             })
+	        }
+			 
+			$(".provision em").click(function(){
+				if($(this).is(".on")){
+					$(this).removeClass("on");
+				}else{
+					$(this).addClass("on");
+				}
+			})
+			$(".provision span").click(function(){
+				if($(".provision em").is(".on")){
+					$(".provision em").removeClass("on");
+				}else{
+					$(".provision em").addClass("on");
+				}
+			})
+			$(".yh li").click(function () {
+				$(this).addClass("current").siblings().removeClass("current");
+				
+		    })
+			$(".gw").click(function(){
+				$(".tenant,.zhlist").hide();
+			})
+			$(".zg").click(function(){
+				$(".tenant,.zhlist").show();
+			})
+			$(".fxs-label").click(function(){
+			
+				$(this).find("input").attr("checked","checked")
+				$(this).addClass("active").siblings().removeClass("active")
+				$(".zhlist").show();
+			})
+			$(".gys-label").click(function(){
+				$(this).find("input").attr("checked","checked")
+				$(this).addClass("active").siblings().removeClass("active")
+				$(".zhlist").hide();
+			})
+		</script>
+	</body>
+</html>

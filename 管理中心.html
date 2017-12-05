@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>游天地微店</title>
+		<link rel="stylesheet" href="style/base.css">
+		<link rel="stylesheet" href="style/css.css">
+	</head>
+	<body style="padding-bottom: 5rem;">
+		<div class="global" style="min-height: 10rem;">
+			<div class="person1 clearfix">
+			  <div class="img">
+			  	<a href="javascript:;">
+			  		<input class="weui_uploader_input" type="file" accept="image/jpg,image/jpeg,image/png,image/gif" id="i1" onchange="previewImage(this)">
+			  		<img src="images/men.jpg" width="100%" id="toux"/>
+			  	</a>
+			  </div>
+				<div class="text">
+					<a href="推荐有奖.html">
+						<h4>用户名123</h4>
+						<p>服务到期时间:2019-05-05</p>
+						<span class="gr"></span>
+						<i class="arrow"></i>
+					</a>
+				</div>
+				
+			</div>
+			
+			<div class="person2">
+				<div class="title"><a href="#"><i class="ico-personm"></i>模板更换<i class="arrow"></i></a></div>
+				<div class="title"><a href="店铺设置.html"><i class="ico-person1"></i>店铺设置<i class="arrow"></i></a></div>
+				<div class="title"><a href="选择套餐.html"><i class="ico-person2"></i>升级店铺<i class="arrow"></i></a></div>
+				<div class="title"><a href="推荐有奖.html"><i class="ico-persont"></i>推荐有奖<i class="arrow"></i></a></div>
+				<div class="title"><a href="产品列表.html"><i class="ico-personw"></i>我的产品<i class="arrow"></i></a></div>
+				<div class="title"><a href="发布产品.html"><i class="ico-personc"></i>产品发布<i class="arrow"></i></a></div>
+				<div class="title"><a href="智能海报.html"><i class="ico-personz"></i>智能海报<i class="arrow"></i></a></div>
+				<div class="title"><a href="分享海报.html"><i class="ico-personf"></i>分享海报<i class="arrow"></i></a></div>
+				<div class="title"><a href="我的客户.html"><i class="ico-person5"></i>我的客户<i class="arrow"></i></a></div>
+				<div class="title"><a href="订单列表.html"><i class="ico-persong"></i>订单管理<i class="arrow"></i></a></div>
+				<div class="title"><a href="我要报价.html"><i class="ico-personj"></i>询报价<i class="arrow"></i></a></div>
+			</div>
+			<footer>
+				<div class="bottomMenu">
+					<ul>
+						
+						<li>
+							<a href="index.html">
+								<i class="ico-home"></i>
+                				<p>我的店铺</p>
+            				</a>
+						</li>
+                        <li>
+							<a href="产品列表.html">
+								<i class="ico-ask"></i>
+                				<p>我的产品</p>
+            				</a>
+						</li>
+                        <li>
+							<a href="选择套餐.html">
+								<i  class="ico-use"></i>
+                				<p>购买服务</p>
+            				</a>
+						</li>
+						<li class="on">
+							<a href="#">
+								<i class="ico-personcenter"></i>
+                				<p>管理中心</p>
+            				</a>
+						</li>
+					</ul>
+				</div>
+			</footer>
+            
+		</div>
+		<script type="text/javascript" src="js/zepto.min.js" ></script>
+		<script type="text/javascript" src="js/lrz.min.js" ></script>
+		<script>
+			function previewImage(file) {
+		    	var MAXWIDTH = 100;
+			    var MAXHEIGHT = 200;
+			    if (file.files && file.files[0]) {
+			        var reader = new FileReader();
+			        reader.onload = function (evt) {         
+			            $('#toux').attr('src',evt.target.result)
+			        };
+			        reader.readAsDataURL(file.files[0]);//
+			    }
+			}
+		</script>
+	</body>
+</html>

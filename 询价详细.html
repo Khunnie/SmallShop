@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>游天地微店</title>
+		<link rel="stylesheet" href="style/weui.css" />
+		<link rel="stylesheet" href="style/weui2.css"/>	
+		<link rel="stylesheet" href="style/base.css">
+		<link rel="stylesheet" href="style/calendar.css" />
+		<link rel="stylesheet" href="style/css.css">
+		<style>
+			html,body{background-color:#f8f8f8;}
+			.select-btns-clk.select-tc .combo_box {
+			    border: 1px solid #2bb9eb;
+			    border-radius: 0.4rem;
+			    padding: 0.2rem 1rem;
+			    display: block;
+			    float: left;
+			    background:transparent;
+			    color: #2bb9eb;
+			    margin: 0;
+			    margin-right: 0.5rem;
+			}
+			.select-btns-clk.select-tc .combo_box.selected {
+				border: 1px solid #2bb9eb;
+			    background: url(images/sel.png) right bottom no-repeat;
+			    background-size: 1.6rem 1.6rem;
+			}
+		</style>
+	</head>
+
+	<body style="padding-bottom: 5rem;">
+		<div class="global" style="min-height: 10rem;">
+			<div class="topside">
+			    <div class="toback"><a href="javascript:history.go(-1);"><i class="ico-back"></i></a></div>
+			    <div class="pagetitle"><b>询价详细</b></div>
+			    <div class="otherFun">
+			        <a href="#">
+			    		<i class="ico-dot"></i>
+			    	</a>
+			    </div>
+			</div>
+			<section class="order2-2">
+		    	<div class="order2-2b">
+			      	<dl>
+			        	<dt>标题</dt>
+			        	<dd>桂林山水</dd>
+			      	</dl>
+			      	<dl>
+			        	<dt>出发日期</dt>
+			        	<dd class="arrow">
+			        		2017-08-14
+			        	</dd>
+			      	</dl>
+			      	<dl>
+						<dt>预计天数</dt>
+						<dd style="position:relative;">
+							2
+						</dd>
+					</dl>
+					<dl>
+						<dt>预计人数</dt>
+						<dd style="position:relative;">
+							<div class="people">
+								<span>成人</span>
+								<div>
+									2
+								</div>
+							</div>
+							<div class="people">
+								<span>儿童</span>
+								<div>
+									1
+								</div>
+							</div>
+						</dd>
+					</dl>
+			      	<dl>
+						<dt>出游预算</dt>
+						<dd style="position:relative;">
+							10000
+						</dd>
+					</dl>
+					
+			      <dl class="choose_area" style="height: auto;">
+			        <dt>目的地</dt>
+			        <dd class="select-btns-clk select-tc clearfix" style="height: auto;padding:0;border-width:0;position:relative;"> 
+			        	<a class="combo_box selected" data-cbo="jn" href="javascript:;">境内</a> 
+			        	<a class="combo_box" data-cbo="jw" href="javascript:;">境外</a> 
+			        </dd>
+			      </dl>
+				    <dl style="height: auto;">
+				        <dt></dt>
+				        <dd style="height: auto;margin-left: 0;">
+				          <textarea class="textareastyle" id="nr" style="width:100%;display:block;padding:0.5rem;" placeholder="请输入询价目的地/景点/酒店等">桂林</textarea>
+				        </dd>
+				    </dl>
+			      	<dl>
+			        	<dt>住宿标准</dt>
+			        	<dd class="arrow">
+			          		五星级
+			       	 	</dd>
+			      	</dl>
+			      <dl class="fj-btn">
+			        <dt>附件</dt>
+			        <dd style="position: relative;"><input type="hidden" id="strZzzs"></dd>
+			      </dl>
+			      <div class="fj-img">
+			       <img src="images/visa.jpg" id="zzpic"> <input type="hidden" id="strZzzs">
+			      </div>
+			    </div>
+		    	
+			  </section>
+		   
+		
+		</div>
+		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="js/base.js" ></script>
+		<script type="text/javascript" src="js/zepto.min.js" ></script>
+		<script type="text/javascript" src="js/common.js" ></script>
+		<script>
+		
+           $(".btn-qk").on("touchend",function(){
+           	   $(".combo_box").removeClass("selected");
+           	   $("#nr").val("");
+           })
+         
+        
+			$("#startDate").click(function(){
+				type=1;
+				$(".order2-2").hide();
+				$("#calendar").show();
+				var nowDate=new Date();
+		    	calendar(nowDate); 
+			})
+			
+		
+		</script>
+	</body>
+
+</html>

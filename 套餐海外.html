@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>游天地微店</title>
+		<link rel="stylesheet" href="style/weui.css" />
+		<link rel="stylesheet" href="style/weui2.css" />
+		<link rel="stylesheet" href="style/base.css">
+		<link rel="stylesheet" href="style/swiper.min.css">
+		<link rel="stylesheet" href="style/css.css">
+		<style>
+			html,body{background-color:#fff; height: auto;}
+		</style>
+	</head>
+
+	<body style="padding-bottom: 5rem;">
+		<div class="global" style="min-height: 10rem;">
+			<div class="overage-top">
+	            <span>当前余额：</span>
+	            <p>
+	                <em id="amoutPrice">0.05</em>元</p>
+	        </div>
+	        <div style="background-color: #fff; padding: 0.5rem; margin-top: 0.5rem; border-top: 1px solid #ddd;">选择套餐</div>
+	        <div class="select-btns-clk select-tc clearfix" style="padding-top: 0.4rem;" id="taocan">
+	        	<a class="combo_box " value="3" je="899.00" href="#">一年 <em><strong>899.00</strong>元</em><i>惠</i></a>
+	        	<a class="combo_box " value="4" je="1399.00" href="#">两年 <em><strong>1399.00</strong>元</em><i>惠</i></a>
+	        </div>
+	        <div style="background-color: #fff; padding: 0.5rem; margin-top: 0.5rem; border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd; position: relative;">
+            <div class="isyue slct">
+            	
+                <label>
+                    <input type="checkbox" name="cyue" class="cyue checkstyle" id="cyue" onclick="ShowCe(this)"><span></span>
+                    是否使用余额</label></div>
+       	 	</div>
+        	<div id="ce" style="background-color: rgb(255, 255, 255); padding: 0.5rem 0.5rem 0.5rem 2.7rem; margin-bottom: 0.5rem; border-bottom: 1px solid rgb(221, 221, 221); display: none;">您还需要支付<strong>0</strong>元</div>
+            <div style="background-color: #fff; padding: 0.6rem 0.5rem; margin-top: 1rem; border-top: 1px solid #ddd;">微信支付</div>
+            <div class="select-btns-clk select-img" style="padding: 0 1rem">
+            <label>
+                <span class="name"><img src="images/wxzf.png">微信</span>
+                <span class="slct"><input name="z-clk" onclick="HideCe()" type="radio" class="rdostyle" value="7"><i></i></span>
+            </label>
+            <label>
+                <span class="name">
+                    <img src="images/zfbzf.png" />支付宝</span>
+                    <span class="slct"><input name="z-clk" type="radio" class="rdostyle" /><i></i></span>
+            </label>
+            <label>
+                <span class="name">
+                    <img src="images/sx.png" />Paypal</span>
+                    <span class="slct"><input name="z-clk" type="radio" class="rdostyle" /><i></i></span>
+            </label>
+        </div>
+        <div class="login-ok">
+            <a class="btn-login-ok exitLogin" id="btnsaveuser" href="javascript:;">立即支付</a> 
+            <a class="btn-login-ok exitLogin" id="btnShowtip" style="display: none" href="javascript:;">正在提交...</a>
+        </div>
+			<footer>
+				<div class="bottomMenu">
+					<ul>
+						<li>
+							<a href="#">
+								<i class="ico-home"></i>
+                				<p>我的店铺</p>
+            				</a>
+						</li>
+                        <li>
+							<a href="javascript:;">
+								<i class="ico-ask"></i>
+                				<p>我的产品</p>
+            				</a>
+						</li>
+                        <li>
+							<a href="#">
+								<i class="ico-use"></i>
+                				<p>购买服务</p>
+            				</a>
+						</li>
+						<li>
+							<a href="#">
+								<i class="ico-personcenter"></i>
+                				<p>管理中心</p>
+            				</a>
+						</li>
+					</ul>
+				</div>
+			</footer>
+		</div>
+		
+		
+		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="js/swiper.min.js"></script>
+		<script type="text/javascript" src="js/common.js"></script>
+		<script type="text/javascript" src="js/zepto.min.js" ></script>
+		<script>
+			var shopname = localStorage.getItem("shopname");
+	        var oid = localStorage.getItem("openid");
+	        var shopId = localStorage.getItem("shopid");
+	        var shopphone = localStorage.getItem("shopphone");
+	        var vTaocan = "-1";
+	        var vTaocanje = "-1";
+
+        $(function () {
+            var flag = jQuery.isLogin();
+
+            if (flag) {
+                var name = localStorage.getItem("name");
+
+                //$(".text").text("您好，" + name);
+
+                GetYe();
+                GetTaocan();
+            } else {
+
+                //window.location = "gwlogin.html";
+            }
+        });
+       
+        function ShowCe(me) {
+            if ($("#cyue").is(":checked")) {
+                var amout = $("#amoutPrice").text();
+               
+                var vce = parseFloat(vTaocanje) - parseFloat(amout);
+                if (vce <= 0) {
+                    $("input[name='z-clk']").attr("value", "2");
+                }
+                else {
+                    $("#ce strong").text(vce);
+                    $("input[name='z-clk']").attr("checked", "checked");
+                    $("input[name='z-clk']").attr("value", "9");
+                }
+
+                $("#ce").css("display", "block");
+            }
+            else {
+                $("#ce").css("display", "none");
+                $("input[name='z-clk']").attr("value", "7");
+            }
+        }
+
+        function HideCe() {
+
+            //$("#ce").css("display", "none");
+        }
+        $(document).on("click", "#btnsaveuser", function() {
+	        $.confirm("是否确认支付?", "确认支付?", function() {
+	        	
+                $("#btnsaveuser").css("display", "none");
+                $("#btnShowtip").css("display", "");
+                var amout = $("#amoutPrice").text();
+                var zffs = $("input[name='z-clk']:checked").val(); //支付方式
+                if (zffs == null) {
+                    $.toast("请选择支付方式", "forbidden");
+                    $("#btnsaveuser").css("display", "");
+                    $("#btnShowtip").css("display", "none");
+                    return;
+                }
+                if (vTaocan == "-1") {
+                    $.toast("请选择套餐类型", "forbidden");
+                    $("#btnsaveuser").css("display", "");
+                    $("#btnShowtip").css("display", "none");
+                    return;
+                }
+                if (zffs == "2") {
+                    if (parseFloat(amout) < parseFloat(vTaocanje)) {
+                        $.toast("对不起，您的余额不足，请充值。", "cancel");
+                        $("#btnsaveuser").css("display", "");
+                        $("#btnShowtip").css("display", "none");
+                        return;
+                    }
+
+                }
+                jQuery.FxsRequest("action=gwcpdg&oid=" + oid, {
+                    tc: vTaocan,
+                    zffs: zffs
+                }, function (data) {
+                    if (data.Result) {
+                        if (zffs == "7" || zffs == "9") {
+                            if (parseFloat(amout) >= parseFloat(vTaocanje)) {
+                                ShowMsg(data.Msg)
+                                location.href = "Gwaccount_tip.html?order_no=" + data.Tag;
+                            }
+                            else {
+                                location.href = "payment.html?order_no=" + data.Tag;
+                            }
+                        }
+                        else {
+                            ShowMsg(data.Msg)
+                            location.href = "Gwaccount_tip.html?order_no=" + data.Tag;
+                        }
+                    } else {
+                        ShowMsg(data.Msg)
+                        $("#btnsaveuser").css("display", "");
+                        $("#btnShowtip").css("display", "none");
+                    }
+                });
+                return true;
+            }, function() {
+	          //取消操作
+	          return false
+	        });
+	      });
+
+        function GetYe() {
+
+            jQuery.FxsRequest("action=getmanagemoney&oid=" + oid, {}, function (data) {
+
+                if (!data.Result) {
+
+                    alert(data.Msg);
+
+                    return;
+                }
+
+
+                $("#amoutPrice").html(data.Tag);
+
+            });
+
+        }
+
+        function GetTaocan() {
+            jQuery.FxsRequest("action=gettaocan&oid=" + oid, {}, function (data) {
+
+                if (!data.Result) {
+                    alert(data.Msg);
+
+                    return;
+                }
+
+                var json = jQuery.parseJSON(data.Msg);
+
+                var arr = new Array();
+                for (var i = 0, t; t = json.Table[i++]; ) {
+                    if (unescape(t.id) == "3" || unescape(t.id) == "4") {
+                        arr.push('<a class="combo_box " value="' + unescape(t.id) + '" je="' + unescape(t.money) + '" href="#">' + unescape(t.name) + ' <em><strong>' + unescape(t.money) + '</strong>元</em><i>惠</i></a>');
+                    }
+                    else {
+                        arr.push('<a class="combo_box " value="' + unescape(t.id) + '" je="' + unescape(t.money) + '" href="#">' + unescape(t.name) + ' <em><strong>' + unescape(t.money) + '</strong>元</em></a>');
+                    }
+
+                }
+                $("#taocan").html(arr.join(''));
+	                $(".combo_box").click(function () {
+	                    						$(this).addClass("selected").siblings(".selected").removeClass("selected");
+	                    vTaocan = $(this).attr("value");
+	                    vTaocanje = $(this).attr("je");
+	                    ShowCe();
+	                })
+            });
+
+        }
+		$(".combo_box").click(function () {
+            			$(this).addClass("selected").siblings(".selected").removeClass("selected");
+            vTaocan = $(this).attr("value");
+            vTaocanje = $(this).attr("je");
+        })
+
+       
+		</script>
+
+	</body>
+
+</html>

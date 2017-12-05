@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>游天地微店</title>
+		<link rel="stylesheet" href="style/weui.css" />
+		<link rel="stylesheet" href="style/weui2.css" />
+		<link rel="stylesheet" href="style/base.css">
+		<link rel="stylesheet" href="style/swiper.min.css">
+		<link rel="stylesheet" href="style/css.css">
+		<style>
+			html,body{background-color:#f5f5f5;}
+			#making dl {
+			    background: #FFF;
+			    padding-top: 0.5rem;
+			    padding-bottom: 0.5rem;
+			    border-top: 1px solid #d2d2d2;
+			    border-bottom: 1px solid #d2d2d2;
+			    height:auto;
+			    margin: 0.5rem 0;
+			    overflow: hidden;
+			}
+			#making dt{
+				float: left;
+				height: 4rem;
+				line-height: 4rem;
+				width: 30%;
+				text-align: center;
+			}
+			#making dd{
+				height: 4rem;
+				line-height: 4rem;
+				float: left;
+				margin-left: 0.5rem;
+				width: 65%;
+			}
+		</style>
+	</head>
+
+	<body style="padding-bottom: 5rem;">
+		<div class="global" style="min-height: 10rem;">
+			<div class="topside">
+			    <div class="toback"><a href="javascript:history.go(-1);"><i class="ico-back"></i></a></div>
+			    <div class="pagetitle"><b>制作海报</b></div>
+			    <div class="otherFun">
+			    	<a href="#">
+			    		<i class="ico-dot"></i>
+			    	</a>
+			    	
+			    </div>
+			</div>
+			<div class="poster">
+				<img src="images/d1.jpg" alt="" class="Imgmodul">
+				<p>
+		    		<span class="text-dash">南京出发</span>
+		    		<a href="javascript:;" class="oder-tit">优胜美地国家公园和红杉树林英文一日游(美国最受欢迎公园之一)</a>
+		    	</p>
+			</div>
+			<div id="making" class="mt05">
+				<dl>
+					<dt>选者背景图</dt>
+					<dd>
+                    	<div class="upload-img" style="height: 4rem;width: 60%;float: left;">
+                    		<div class="dp-img">
+                    			<img src="images/none.png">
+                    		</div>
+                    		<a href="javascript:;" class="sc">删除</a>
+                    	</div>
+                    	<div class="upload-btn">
+                    		 <input class="weui_uploader_input" type="file" accept="image/jpg,image/jpeg,image/png,image/gif" id="i1" onchange="previewImage(this)">
+                    		<span>上传</span>
+                    	</div>
+                    </dd>				
+				</dl>
+				<dl>
+					<dt>海报模板</dt>
+					<dd class="modul">
+						<div>
+							<span class="modua"></span>
+						</div>
+						<div class="selected">
+							<span class="modub"></span>
+						</div>
+						<div>
+							<span class="moduc"></span>
+						</div>
+						<div>
+							<span class="modud"></span>
+						</div>
+						<div>
+							<span class="modue"></span>
+						</div>
+						<div>
+							<span class="moduf"></span>
+						</div>
+					</dd>
+				</dl>
+			</div>
+	        <div class="login-ok">
+	        	<a class="btn-login-ok view" href="javascript:;">预览海报</a>
+				<a class="btn-login-ok exitLogin mt05" href="javascript:;">生成海报</a>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="js/zepto.min.js" ></script>
+		<script type="text/javascript" src="js/swiper.min.js"></script>
+		<script type="text/javascript" src="js/lrz.min.js" ></script>
+		<script type="text/javascript" src="js/common.js"></script>
+		<script>
+			$(".modul div").click(function(){
+				$(this).addClass("selected").siblings().removeClass("selected");
+			})
+			function previewImage(file) {
+		    	var MAXWIDTH = 100;
+			    var MAXHEIGHT = 200;
+			    if (file.files && file.files[0]) {
+			        var reader = new FileReader();
+			        reader.onload = function (evt) {         
+			            $('.dp-img').html('<img class="weui_uploader_file" src="'+evt.target.result+'"/>');
+
+			        };
+			        reader.readAsDataURL(file.files[0]);//
+			        console.log(file.files[0]);
+			    }
+			}
+		</script>
+	</body>
+
+</html>

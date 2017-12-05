@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>私人定制</title>
+    <link rel="stylesheet" href="style/base.css">
+    <link rel="stylesheet" href="style/css.css">
+    <link rel="stylesheet" href="style/icon.css" />
+	<link rel="stylesheet" href="style/weui.css" />
+	<link rel="stylesheet" href="style/weui2.css"/>	
+    <link rel="stylesheet" href="style/calendar.css">
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="js/zepto.min.js" ></script>
+    <script type="text/javascript" src="js/picker.js" ></script>
+    <script type="text/javascript" src="js/select.js" ></script>
+    <script type="text/ecmascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/NGD_calendar.js"></script>
+    <style>
+        .NGD_calendar_fullscreen .NGD_calendar_box .NGD_month_box .NGD_days ul li
+        {
+            background-color: #f8f8f8;
+        }
+        .NGD_calendar_fullscreen
+        {
+            color: #666;
+        }
+        .NGD_calendar_fullscreen .NGD_calendar_box .NGD_month_box .NGD_days ul li.NGD_days_selected_rang
+        {
+            background-color: #fff;
+        }
+        .NGD_calendar_fullscreen .NGD_calendar_box .NGD_month_box .NGD_days ul li.NGD_days_selected_ok
+        {
+            background-color: #36bae8;
+            color: #fff;
+        }
+    </style>
+</head>
+<body class="mui-ios mui-ios-9 mui-ios-9-1">
+    <form name="srdz_form" id="srdz_form" url="{config.webpath}tools/app_ajax.ashx?action=srdz_add">
+    <!--<input type="hidden" value="" name="dzlx" />
+		<input type="hidden" value="" name="address" />
+		<input type="hidden" value="" name="first_date" />
+		<input type="hidden" value="" name="last_date" />
+		<input type="hidden" value="" name="num" />
+		<input type="hidden" value="" name="dzlx" />-->
+    <div class="global" id="searchhotel">
+        <div class="topside">
+			    <div class="toback"><a href="javascript:history.go(-1);"><i class="ico-back"></i></a></div>
+			    <div class="pagetitle"><b>定制包团</b></div>
+			    <div class="otherFun">
+			        <a href="#">
+			    		<i class="ico-dot"></i>
+			    	</a>
+			    </div>
+			</div>
+        <section class="order2-2 customer_box" style="padding-top: 0;">
+				<div class="search-hotel-block order2-2b">
+					<dl>
+						<dt><span class="red">*</span>定制类型</dt>
+						<dd class="arrow CustomType">
+							<div class="weui_cell_bd weui_cell_primary">
+			                    <input class="weui_input" type="text" value="" id='dz'/>
+			                </div>
+                        </dd>
+					</dl>
+                    <dl>
+						<dt><span class="red">*</span>目标区域</dt>
+						<dd class="arrow Region">
+							<div class="weui_cell_bd weui_cell_primary">
+			                    <input class="weui_input" type="text" value="" id='qy'/>
+			                </div>
+                        </dd>
+					</dl>
+					<dl>
+						<dt><span class="red">*</span>出发日期</dt><dd class="arrow"><input type="text" id="startDate" name="startDate" class="startDate" placeholder="最早出发日期" data=""></dd>
+					</dl>
+					<dl>
+						<dt>&nbsp;</dt><dd class="arrow"><input type="text" id="endDate" name="endDate" class="endDate" placeholder="最晚出发日期" data=""></dd>
+					</dl>
+                    <dl>
+						<dt><span class="red">*</span>出行人数</dt><dd><input type="text" id="tour_num" name="tour_num" placeholder="请输入出行人数"> </dd>
+					</dl>
+					<dl>
+						<dt><span class="red">*</span>预算</dt><dd><input type="text" id="budget" name="budget" placeholder="元/人"> </dd>
+					</dl>
+                    <dl>
+						<dt>其它需求</dt><dd><input type="text" id="special_needs" name="special_needs" placeholder="其他需求"> </dd>
+					</dl>
+                    <dl>
+						<dt><span class="red">*</span>联系人</dt><dd><input type="text" id="contacts" name="contacts" placeholder="出游联系人"> </dd>
+					</dl>
+                    <dl>
+						<dt><span class="red">*</span>电话</dt><dd><input type="text" id="phone" name="phone" placeholder="电话号码"> </dd>
+					</dl>
+                    <dl>
+						<dt><span class="red">*</span>邮箱</dt><dd><input type="text" id="email" name="email" placeholder="输入您的邮箱"> </dd>
+					</dl>
+				</div>
+			</section>
+        <div class="ok submit-two btn_wrap">
+            <a href="javascript:;" class="btn-ok submitButton" id="submit_form">提交</a>
+        </div>
+    </div>
+    </form>
+    <div class="global" id="calendar" style="display: none; padding-top: 3rem;">
+        <div class="topside" style="position: fixed; top: 0; width: 100%; z-index: 1003;
+            left: 0;">
+            <div class="toback">
+                <a href="javascript:history.go(-1);"><i class="ico-back"></i>返回</a></div>
+            <div class="pagetitle" data="">
+                <b>日期选择</b></div>
+            <div class="otherFun">
+                <a href="javascript:;" class="OK">确定</a>
+            </div>
+        </div>
+        <!-- 时间控件 -->
+        <div class="NGD_calendar">
+            <header class="cldar">
+	                <h1>选择日期</h1>
+			    </header>
+            <div class="NGD_calendar_fullscreen">
+                <ul class="tag_week">
+                    <li>六</li>
+                    <li>日</li>
+                    <li>一</li>
+                    <li>二</li>
+                    <li>三</li>
+                    <li>四</li>
+                    <li>五</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+      	 $("#dz").select({
+		        title: "定制类型",
+		        autoClose:true,
+		        
+		        items: ['企业公司','亲朋好友','家庭亲子','个人'],
+		        onChange: function(d) {
+		        }
+		      });
+	    $("#qy").select({
+	        title: "目标区域",
+	        autoClose:true,
+	        
+	        items: ['国内','港澳台地区','东南亚及海岛','个人','日韩','欧美','非洲及中东','其他'],
+	        onChange: function(d) {
+	        }
+	      });
+        var oid = localStorage.getItem("openid");
+        var shopid = localStorage.getItem("shopid");
+        var vPhone = localStorage.getItem("shopphone");
+        var type = 0;
+        $(document).ready(function () {
+        	
+            $("#startDate").click(function () {
+                type = 1;
+                $("#searchhotel").hide();
+                $("#calendar").show();
+                var nowDate = new Date();
+                calendar(nowDate);
+            })
+            $("#endDate").click(function () {
+                type = 2;
+                if ($("#startDate").val() == "" || $("#startDate").val() == null) {
+                    $("#startDate").focus();
+                    ShowMsg("请选择最早出发日期");
+                    return false;
+                }
+                $("#searchhotel").hide();
+                $("#calendar").show();
+                var n = $("#startDate").attr('data').match(/^(\d{4})(\d{2})(\d{2})$/);
+                var iDate = new Date(n[1], n[2] - 1, n[3]);
+                calendar(iDate);
+            })
+            $(".OK", $("#calendar")).unbind("click").click(function () {
+                $("#searchhotel").show();
+                switch (type) {
+                    case 1:
+                        $("#startDate").val($("#calendar .pagetitle").html());
+                        $("#startDate").attr("data", $("#calendar .pagetitle").attr("data"));
+                        break;
+                    case 2:
+                        $("#endDate").val($("#calendar .pagetitle").html());
+                        $("#endDate").attr("data", $("#calendar .pagetitle").attr("data"));
+                        break;
+                }
+                $("#calendar").hide();
+            })
+            $(".toback", $("#calendar")).unbind("click").click(function () {
+                $("#calendar").hide();
+                $("#searchhotel").show();
+            })
+
+            $(".btn_wrap").on("click", "#submit_form", function () {
+
+
+                var phone = $('#phone').val();
+                var customType = $('.CustomType').find("option:selected");
+                var region = $('.Region').find("option:selected");
+                if (customType.size() == 0) {
+                    ShowMsg('为了能更好的为您服务 请将带 * 的信息填写完整');
+                    $('.CustomType').focus();
+                    return false;
+                }
+                if (region.size() == 0) {
+                    ShowMsg('为了能更好的为您服务 请将带 * 的信息填写完整');
+                    $('.Region').focus();
+                    return false;
+                }
+
+                var firstDate = $('#startDate').val();
+                var lastDate = $('#endDate').val();
+
+                if (firstDate == '' || lastDate == '') {
+                    ShowMsg('为了能更好的为您服务 请将带 * 的信息填写完整');
+                    $('#startDate').focus();
+                    return false;
+                }
+
+                var firstDateStr = time2unix($("#startdate").val());
+                var lastDateStr = time2unix($("#endDate").val());
+                if (firstDateStr > lastDateStr) {
+                    ShowMsg('最晚出发日期不能早于最早出发日期');
+                    $('#startDate').focus();
+                    return false;
+                }
+
+                if ($('#tour_num').val() == '') {
+                    ShowMsg('为了能更好的为您服务 请将带 * 的信息填写完整');
+                    $('#tour_num').focus();
+                    return false;
+                }
+                var email_pattern = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+$/;
+                var num_pattern = /^([0-9])+$/;
+
+                if (!checkFormat($("#tour_num").val(), num_pattern, '人数')) {
+                    ShowMsg('请填写整数1');
+                    $("#tour_num").focus();
+                    return false;
+                }
+
+                if ($('#budget').val() == '') {
+                    ShowMsg('为了能更好的为您服务 请将带 * 的信息填写完整');
+                    $('#budget').focus();
+                    return false;
+                }
+
+                if (!checkFormat($("#budget").val(), num_pattern, '预算')) {
+                    ShowMsg('请填写整数2');
+                    $('#budget').focus();
+                    return false;
+                }
+
+
+                if ($('#contacts').val() == '') {
+                    ShowMsg('为了能更好的为您服务 请将带 * 的信息填写完整');
+                    $('#contacts').focus();
+                    return false;
+                }
+                if (phone == '') {
+                    ShowMsg('为了能更好的为您服务 请将带 * 的信息填写完整');
+                    $('#phone').focus();
+                    return false;
+                }
+                var pattern = /^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(17(0|[6-8]))|(18([0-3]|[5-9])))\d{8}$/;
+                var pattern1 = /^(\d{3}-\d{8})|(\d{4}-\d{7})$/;
+                if (!pattern.test(phone) && !pattern1.test(phone)) {
+                    ShowMsg('电话格式不正确');
+                    $('#phone').focus();
+                    return false;
+                }
+
+                if ($("#email").val() == '') {
+                    ShowMsg('为了能更好的为您服务 请将带 * 的信息填写完整');
+                    $("#email").focus();
+                    return false;
+                }
+
+                if (!checkFormat($("#email").val(), email_pattern, '邮箱')) {
+                    ShowMsg('邮箱格式不正确');
+                    $("#email").focus();
+                    return false;
+                }
+                jQuery.FxsRequest("action=srdz_add&oid=" + oid + "&shopid=" + shopid,
+					$("#srdz_form").serialize(),
+					function (data) {
+					    if (!data.Result) {
+					        //							if (data.Msg == "islogin") {
+					        //								//window.location = "login.html";
+					        //							} 
+					        //							else {
+					        //								ShowMsg(data.Msg);
+					        //								window.location = "login.html";
+					        //								return;
+					        //							}
+					        alert(data.Msg);
+					    }
+					    alert(data.Msg);
+					    window.location.href = "gwusercenter.html";
+					});
+
+            });
+        })
+
+        function calendar(iDate) {
+            $(".NGD_calendar_box").empty();
+            iDate = new Date(iDate.getFullYear(), iDate.getMonth(), iDate.getDate());
+            var selectDate = null;
+            var startDate_1 = new Date(iDate.getFullYear(), iDate.getMonth(), 1);
+            var fullscreen_calendar = $(".NGD_calendar_fullscreen").NGD_calendar({
+                months: 6,
+                startWeek: 6,
+                event: "show",
+                showDateSelect: "text",
+                dateArea: [startDate_1, new Date(startDate_1.getFullYear() + 1, startDate_1.getMonth(), startDate_1.getDate())],
+                onSelect: function (e, d) {
+                    if (e.date - iDate >= 0) {
+                        var odate = dateFormat(e.date, "yyyy-MM-dd");
+                        $("#calendar .pagetitle").html(odate);
+                        selectDate = dateFormat(e.date, "yyyyMMdd");
+                        $("#calendar .pagetitle").attr("data", selectDate);
+                        fullscreen_calendar.doms.calendarBox.find(".NGD_days_selected_ok").removeClass("NGD_days_selected_ok");
+                        e.o.addClass("NGD_days_selected_ok");
+                    }
+                },
+                dayBinded: function (e) {
+                    if (e.date - iDate >= 0) {
+                        e.o.addClass("NGD_days_selected_rang");
+                        if (type == 2)
+                            console.log(e.date);
+                        if (e.date - iDate == 0) {
+                            e.o.addClass("NGD_days_selected_ok");
+                            $("#calendar .pagetitle").html(dateFormat(e.date, "yyyy-MM-dd"));
+                            selectDate = dateFormat(e.date, "yyyyMMdd");
+                            if (type == 2)
+                                console.log(e.date);
+                            $("#calendar .pagetitle").attr("data", selectDate);
+                        }
+                    }
+                    else {
+                        e.o.removeClass("NGD_days_selected_rang");
+                    }
+                }
+            })
+        }
+        function checkFormat(data, pattern, message) {
+            if (data == '' || !pattern.test(data)) {
+                ShowMsg(message);
+                return false;
+            }
+            return true;
+        }
+
+        function time2unix(date) {
+            var dates;
+            if (date && date.length >= 10) {
+                dates = date.split("-");
+                // 把日期转为unix时间戳
+                var strDate = new Date(Date.UTC(dates[0], (dates[1] - 1), dates[2], 0, 0, 0));
+                var unixTimeStamp = strDate.getTime() / 1000 - 8 * 60 * 60;
+                return unixTimeStamp;
+            }
+        }
+    </script>
+
+
+</body></html>

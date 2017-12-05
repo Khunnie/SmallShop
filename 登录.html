@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html style="background-color: #fff;">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>游天地微店</title>
+		<link rel="stylesheet" href="style/base.css">
+		<link rel="stylesheet" href="style/css.css">
+		<link rel="stylesheet" href="style/weui2.css" />
+	</head>
+	<body style="background-color: #e4e5e5;">
+		<div class="loginbg reg">
+			<div class="login">
+				
+				<div class="img"><i class="ico-login"></i></div>
+				<div class="loginbox">
+					<div class="tenant">
+						<label class="state_pw active">
+							<input type="radio" name="fxs" checked="checked" value="on"  />
+							<span>动态密码登录</span>
+							
+						</label>
+						<label  class="User_pw">
+							<input type="radio" name="fxs" />
+							<span>账号密码登录</span>
+							
+						</label>
+						
+					</div>
+					<ul>
+						<li class="us">
+							<span class="ico-logo"><i class="ico-ico"></i></span>
+							<div class="user-name">
+								<div id="type" class="test">
+						            <span>中国 +86</span>
+						            <ul class="dropdown">
+						                <li>中国 +86</li>
+						            </ul>
+						        </div>
+								<input type="tel" id="username" class="userName" placeholder="请输入您的手机号">
+							</div>
+							
+							
+						</li>
+						<li class="pw">
+							<span class="ico-logo">
+								<i class="ico-pwd"></i>
+							</span>
+							<div class="dtmm">
+								<input type="password" id="userpw" class="userPw" placeholder="请输入密码">
+								<button class="dt">发送动态密码</button>	
+							</div>
+						</li>
+						<li class="pw loginPw hidden">
+							<span class="ico-logo">
+								<i class="ico-pwd"></i>
+							</span>
+							<div class="dtmm">
+								<input type="password" id="userpw" class="userPw" placeholder="请输入密码">
+							
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="login-ok clearfix">
+					<a class="btn-login-ok sumbitLogin w70" href="javascript:;"  onclick="UserLogin()" id="login">掌柜登录</a>
+					<a class="btn-login-ok w30" href="javascript:;"><i class="wx"></i>登录</a>
+				</div>
+				<div class="login-p">还不是网站会员？<a class="green1" href="注册.html">马上注册>></a></div>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="js/base.js"></script>
+		<script type="text/javascript" src="js/zepto.min.js" ></script>
+		<script>
+			$(".test").on("touchend",function(){
+				var t = $(this).children("ul")
+				if(t.is(":hidden")){
+					t.show();
+				}else{
+					t.hide();
+				}
+				
+			})
+			/*切换*/
+			$(".state_pw").click(function(){
+				$(this).find("input").attr("checked","checked")
+				$(this).addClass("active").siblings().removeClass("active")
+				$(".loginPw").hide().prev("li").show();
+			})
+			$(".User_pw").click(function(){
+				$(this).find("input").attr("checked","checked")
+				$(this).addClass("active").siblings().removeClass("active")
+				$(".loginPw").show().prev("li").hide();
+			})
+			function UserLogin() {
+	            var tmpUserName = $("#username").val()
+	            var tmpUserPwd = $("#userpw").val();
+	             $(document).on("click", "#login", function() {
+	             	 if (!CheckPhoneNum(tmpUserName) && !CheckEmail(tmpUserName) && !CheckLoginName(tmpUserName)) {
+	             	 	 $("#username").focus();
+	             	 	 $.toast("请输入正确手机号", "forbidden");
+	             	 	 return false;
+	             	 }
+	             
+	             })
+	        }
+		</script>
+	</body>
+</html>
